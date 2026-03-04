@@ -6,7 +6,10 @@ const deck = params.get("deck") || "presences-capverdiennes";
 
 function loadSlides(lang) {
   currentLang = lang;
-  fetch(`${deck}/slides-${lang}.json`)
+  const deckPath = deck === "." ? "" : deck;
+  const filePath = deckPath ? `${deckPath}/slides-${lang}.json` : `slides-${lang}.json`;
+  
+  fetch(filePath)
     .then((res) => {
       if (!res.ok) {
         throw new Error(`HTTP ${res.status}`);
@@ -18,7 +21,7 @@ function loadSlides(lang) {
       loadFromPath();
     })
     .catch((err) => {
-      console.error(`Failed to load ${deck}/slides-${lang}.json:`, err);
+      console.error(`Failed to load ${filePath}:`, err);
       if (lang !== "en") {
         loadSlides("en");
       }
@@ -58,7 +61,9 @@ function renderSlide(index) {
   viewer.innerHTML = "";
 
   const obj = document.createElement("object");
-  obj.data = `${deck}/${slides[index].file}`;
+  const deckPath = deck === "." ? "" : deck;
+  const filePath = deckPath ? `${deckPath}/${slides[index].file}` : slides[index].file;
+  obj.data = filePath;
   obj.type = "image/svg+xml";
 
   viewer.appendChild(obj);
