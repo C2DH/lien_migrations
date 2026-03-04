@@ -29,7 +29,7 @@ body {
   overflow-y: auto;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  touch-action: pan-y pinch-zoom;
+  touch-action: pan-x pan-y;
   overscroll-behavior: contain;
   border-top: 1px solid
     color-mix(in srgb, var(--secondary-color) 30%, transparent);
@@ -43,6 +43,7 @@ body {
   width: 100%;
   height: auto;
   max-width: none;
+  touch-action: pan-x pan-y;
 }
 
 #header-nav {
@@ -157,49 +158,54 @@ body {
     grid-template-rows: auto 1fr auto;
   }
 
-  #viewer {
-    touch-action: manipulation;
-  }
-
   #header-nav {
-    min-height: 5.5rem;
+    min-height: 2.25;
   }
 
   #nav {
-    min-height: 5.5rem;
+    min-height: 2.25;
   }
 
   .header-controls {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 1rem;
   }
 
   #nav a,
   #header-nav a {
-    min-height: 3.5rem;
-    padding: 0.75rem 1.25rem;
-    font-size: 1.25rem;
+    min-height: 1rem;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .lang-switcher {
+    gap: 0.3rem;
   }
 
   .lang-switcher a {
-    padding: 0.65rem 1.15rem;
-    font-size: 1.1rem;
+    padding: 1rem 1.7rem;
+    font-size: 0.8rem;
   }
 
   .zoom-btn {
-    min-width: 3.5rem;
-    min-height: 3.5rem;
-    font-size: 1.4rem;
-    padding: 0 0.65rem;
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    font-size: 1.2rem;
+    padding: 0 1rem;
   }
 
   .zoom-reset {
-    min-width: 5rem;
-    font-size: 1.1rem;
+    min-width: 2.5rem;
+    font-size: 0.8rem;
   }
 
   .zoom-level {
-    min-width: 4rem;
-    font-size: 1.1rem;
+    min-width: 2rem;
+    font-size: 0.8rem;
+  }
+
+  .nav-buttons {
+    gap: 1rem;
   }
 }

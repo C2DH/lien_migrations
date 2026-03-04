@@ -1,7 +1,7 @@
 let slides = [];
 let currentLang = "en";
 let currentSlideIndex = 0;
-let zoomLevel = 0.5;
+let zoomLevel = 0.75;
 
 const MIN_ZOOM = 0.25;
 const MAX_ZOOM = 2;
@@ -79,15 +79,18 @@ function renderSlide(index) {
   img.alt = `Slide ${slides[index].id}`;
   img.className = "slide-image";
 
-  img.addEventListener(
-    "wheel",
-    (event) => {
-      viewer.scrollTop += event.deltaY;
-      viewer.scrollLeft += event.deltaX;
-      event.preventDefault();
-    },
-    { passive: false },
-  );
+  // Only add wheel event listener for non-touch devices
+  if (!("ontouchstart" in window)) {
+    img.addEventListener(
+      "wheel",
+      (event) => {
+        viewer.scrollTop += event.deltaY;
+        viewer.scrollLeft += event.deltaX;
+        event.preventDefault();
+      },
+      { passive: false },
+    );
+  }
 
   viewer.appendChild(img);
   applyZoom();
