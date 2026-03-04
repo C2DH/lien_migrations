@@ -2,15 +2,21 @@
 <html>
   <head>
     <style>
-      @import "styles.css";
+      @import "../styles.css";
     </style>
     <meta charset="UTF-8" />
-    <title>Presentation</title>
+    <title>Presences Capverdiennes</title>
   </head>
   <body>
     <div id="header-nav"></div>
     <div id="viewer"></div>
     <div id="nav"></div>
-    <script src="viewer.js"></script>
+    <script>
+      // Set deck parameter in URL before loading viewer
+      const url = new URL(window.location);
+      url.searchParams.set("deck", "presences-capverdiennes");
+      window.history.replaceState({}, "", url);
+    </script>
+    <script src="../viewer.js"></script>
   </body>
 </html>
