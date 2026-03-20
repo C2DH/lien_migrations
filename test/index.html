@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @import "../styles.css";
+    </style>
+    <title>test</title>
+  </head>
+  <body>
+    <div id="header-nav"></div>
+    <div id="viewer-wrapper">
+      <div id="viewer"></div>
+    </div>
+    <div id="nav"></div>
+    <script>
+      // Set deck parameter to current directory (relative paths)
+      const url = new URL(window.location);
+      url.searchParams.set("deck", ".");
+      window.history.replaceState({}, "", url);
+    </script>
+    <script src="../viewer.js"></script>
+  </body>
+</html>

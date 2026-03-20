@@ -37,6 +37,8 @@ A subproject is a self-contained folder that contains:
 
 Follow these steps in order.
 
+If you prefer automation, you can run `./bootstrap-subproject.sh <subproject-folder>` from the repository root. The script applies the same safety rules as this guide: it refuses to run when JSON manifests already exist, generates `slides-en.json`/`slides-<lang>.json` from `slides*` folders, validates required fields and file format, and creates `index.html` from `presences-capverdiennes/index.html` when missing.
+
 ### Step 1 – Receive the target folder
 
 The user will tell you the path to a folder that contains one or more sub-folders of SVG files, for example:
